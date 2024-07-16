@@ -24,6 +24,12 @@ class customer:
         self.budget = np.random.randint(1000, 5000)
         # Purchase decision
         self.likelihood_of_purchase = {}
+        # Number of posting
+        self.number_of_posting = 0
+        # Exposed to the postings
+        self.exposed_postings = {}
+        # Following
+        self.followings = {}
         
     def couch_time(self, brand_name, campaign_name, effectiveness, brand_power):
         # Advertising Exposure
@@ -209,3 +215,11 @@ def customer_mind(dataframe):
             tmp["NumberOfFavorites"] = len(tmp[tmp["Likelihood of Purchase"] >= max_value - 0.01])
             return_df = pd.concat([return_df, tmp])
     return return_df
+
+
+def get_friends(customers):
+    for customer in range(len(customers)):
+        number_of_friends = np.random.randint(1, 100)
+        customers[customer].friends = np.random.choice(range(len(customers)), number_of_friends)
+    
+
